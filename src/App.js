@@ -12,6 +12,7 @@ import DonorEditForm from "./components/DonorEditForm";
 import Table from "./components/Table";
 import RecipientProfile from "./components/RecipitentProfile";
 import RecipientEditForm from "./components/RecipientEditForm";
+import RecipientTable from "./components/RecipientTable";
 
 function App() {
 
@@ -36,6 +37,7 @@ function App() {
         <Route exact path="/donor/profile" element={<Profile  user="donor"/>}/>
         <Route exact path="/donor/profile/edit" element={<DonorEditForm/>}/>
         <Route exact path="/hospital/donors" element={<Table/>}/>
+        <Route exact path="/hospital/recipients" element={<RecipientTable/>}/>
         <Route exact path="/recipient/profile" element={<RecipientProfile  user="recipient"/>}/>
         <Route exact path="/recipient/profile/edit" element={<RecipientEditForm/>}/>
       </Routes>

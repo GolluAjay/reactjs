@@ -8,6 +8,10 @@ import uploadFileRedure from "./slice/uploadFile";
 import donorProfileRedure from "./slice/donorProfile";
 import editRecipientDetailsReducer from "./slice/editRecipientDetails";
 import recipientProfileReducer from "./slice/recipientProfile";
+import hospitalDonorRedure from "./slice/hospitalDonor";
+import donorAuthorizeRedure from './slice/hospitalDonorAuthorize';
+import donorUnuthorizeRedure from './slice/hospitalDonorUnauthorize';
+import hospitalRecipientReducer from './slice/hospitalRecipients'
 
 export const store = configureStore({
     middleware:[thunk],
@@ -19,6 +23,10 @@ export const store = configureStore({
         uploadFile : uploadFileRedure,
         donorProfile : donorProfileRedure,
         editRecipientDetails : editRecipientDetailsReducer,
-        recipientProfile : recipientProfileReducer
+        recipientProfile : recipientProfileReducer,
+        hospitalDonor : hospitalDonorRedure,
+        donorAuthorize : donorAuthorizeRedure,
+        donorUnuthorize : donorUnuthorizeRedure,
+        hospitalRecipient : hospitalRecipientReducer
     },
 });
