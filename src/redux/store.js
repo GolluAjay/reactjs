@@ -5,6 +5,9 @@ import signUpReducer from "./slice/signUp";
 import getHospitalsReducer from "./slice/getHospitals";
 import editDonorDetailsRedure from './slice/editDonorDetails'
 import uploadFileRedure from "./slice/uploadFile";
+import donorProfileRedure from "./slice/donorProfile";
+import editRecipientDetailsReducer from "./slice/editRecipientDetails";
+import recipientProfileReducer from "./slice/recipientProfile";
 
 export const store = configureStore({
     middleware:[thunk],
@@ -13,6 +16,9 @@ export const store = configureStore({
         signIn: signInReducer,
         hospitalNames : getHospitalsReducer,
         editDonorDetails : editDonorDetailsRedure,
-        uploadFile : uploadFileRedure
+        uploadFile : uploadFileRedure,
+        donorProfile : donorProfileRedure,
+        editRecipientDetails : editRecipientDetailsReducer,
+        recipientProfile : recipientProfileReducer
     },
 });
