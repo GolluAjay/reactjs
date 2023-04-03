@@ -1,24 +1,41 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { ChevronLeftIcon } from '@heroicons/react/solid';
 import { Link } from 'react-router-dom';
 import {  useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import { editDonorDetails } from '../redux/slice/editDonorDetails';
+import { uploadFile } from '../redux/slice/uploadFile';
 
 const DonorEditForm = () => {
+  const signIn = useSelector((state)=>state.signIn);
+
+  const [number,setNumber] = useState();
+  const [file,setFile] = useState();
+  const [address,setAddress] = useState();
+  const dispatch = useDispatch();
 
 
   const navigate = useNavigate();
 
   const  handleSubmit = (event) => {
     // event.preventDefault();
-  
+    // console.log(file[0]);
+
     const organs = [];
     const checkboxes = document.querySelectorAll('input[type="checkbox"][name="organs"]:checked');
     checkboxes.forEach((checkbox) => {
       organs.push(checkbox.value);
     });
-  
-    console.log(organs);
-    navigate('/donor/dashboard');
+    console.log({"address":address,"list":organs,"number":number});
+    try {
+      dispatch(editDonorDetails({"address":address,"list":organs,"number":number,"user":"donor","token":signIn.data.token}));
+      console.log(file[0]);
+      dispatch(uploadFile({"file":file[0],"user":"donor","token":signIn.data.token}));
+      navigate('/donor/dashboard');
+    } catch (error) {
+      navigate('/donor/signIn')
+      console.log(error);
+    }
     // Do something with the list of organs here
   }
 
@@ -40,10 +57,10 @@ const DonorEditForm = () => {
         
         <label htmlFor="number" className="inline-block w-20 mr-6 text-right 
                                  font-bold text-gray-600">Contact Number</label>
-        <input type="number" id="number" name="number" placeholder="number" 
+        <input type="text" id="number" name="number" placeholder="number" 
                className="flex-1 py-2 border-b-2 border-gray-400 focus:border-blue-400
                       text-gray-600 placeholder-gray-400
-                      outline-none"/>
+                      outline-none" onChange={(e)=>setNumber(e.target.value)} />
       </div>
 
       <div className="flex items-center mb-5">
@@ -53,7 +70,7 @@ const DonorEditForm = () => {
         <input type="text" id="address" name="address" placeholder="Address" 
                className="flex-1 py-2 border-b-2 border-gray-400 focus:border-blue-400
                       text-gray-600 placeholder-gray-400
-                      outline-none"/>
+                      outline-none" onChange={(e)=>setAddress(e.target.value)}/>
       </div>
 
 <div className="flex items-center mb-5">
@@ -91,10 +108,11 @@ const DonorEditForm = () => {
                                              font-bold text-gray-600">
     EHR Document
   </label>
+  
   <input type="file" id="ehr-document" name="ehr-document" 
          className="flex-1 py-2 border-b-2 border-gray-400 focus:border-blue-400
                     text-gray-600 placeholder-gray-400
-                    outline-none"/>
+                    outline-none" onChange={(e)=>setFile(e.target.files)}/>
 </div>
       <div className="text-right">
         <button className="py-3 px-8 bg-blue-600 text-white font-bold" onClick={handleSubmit}>Submit</button> 

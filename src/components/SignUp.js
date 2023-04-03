@@ -8,7 +8,7 @@ import { getHospitals } from '../redux/slice/getHospitals';
 const SignUp = (props) => {
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
-    const [name,setName] = useState("");
+    const [name,setName] = useState(null);
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const state = useSelector((state)=>state.signUp);
@@ -42,6 +42,10 @@ const SignUp = (props) => {
 useEffect(()=>{
     dispatch(getHospitals({user:"hospital"}));
 },[dispatch])
+
+useEffect(()=>{
+    setName("Hospital Name");
+},[])
 
  
   return (
@@ -84,11 +88,11 @@ useEffect(()=>{
                                 type="text" name="name" placeholder="Hospital Name"  onChange={(e)=>setName(e.target.value)} required/>):
                                 (<><select
                                           className="w-full p-2 text-gray-800 placeholder-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300 appearance-none"
-                                          name="name" placeholder='Hospital Name' onChange={(e)=>setName(e.target.value)}  required>
-                                          <option value="">Hospital Name</option>
+                                          name="name" onChange={(e)=>{setName(e.target.value)}}  required>
+                                                <option key={"Hospital Name"} value="Hospital Name">Hospital Name</option>
                                           {
                                                 hospitalNames !== null ? (hospitalNames.list.map(hospital => (
-                                                        <option key={Math.random()} value={hospital}>{hospital}</option>
+                                                        <option key={hospital} value={hospital}>{hospital}</option>
                                                      ))) : <></>
                                           }
                                       </select><div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none bottom-0">
