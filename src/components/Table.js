@@ -28,7 +28,7 @@ const Table = () => {
                     Donor ID
                 </th>
                 <th scope="col" className="px-6 py-3">
-                    Email
+                    Contact Number
                 </th>
                 <th scope="col" className="px-6 py-3">
                     EHR
@@ -44,7 +44,7 @@ const Table = () => {
                     {donor.id}
                 </th>
                 <td className="px-6 py-4">
-                    {donor.email}
+                    {donor.contactNumber}
                 </td>
                 
                 <td className="px-6 py-4">

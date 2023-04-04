@@ -2,9 +2,9 @@ import React from 'react'
 import { ChevronLeftIcon } from '@heroicons/react/solid';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-// import { recipientAuthorize } from '../redux/slice/hospitalrecipientAuthorize';
-// import { recipientUnauthorize } from '../redux/slice/hospitalrecipientUnauthorize';
-// import {hospitalRecipient} from '../redux/slice/hospitalRecipients';
+import { recipientAuthorize } from '../redux/slice/hospitalRecipientAuthorize';
+import { recipientUnauthorize } from '../redux/slice/hospitalRecipientUnauthorize';
+import {hospitalRecipient} from '../redux/slice/hospitalRecipients';
 
 const RecipientTable = () => {
     const recipients = useSelector((state)=>state.hospitalRecipient.data);
@@ -24,7 +24,7 @@ const RecipientTable = () => {
                     Recipient ID
                 </th>
                 <th scope="col" className="px-6 py-3">
-                    Email
+                    Contact Number
                 </th>
                 <th scope="col" className="px-6 py-3">
                     EHR
@@ -40,7 +40,7 @@ const RecipientTable = () => {
                     {recipient.id}
                 </th>
                 <td className="px-6 py-4">
-                    {recipient.email}
+                    {recipient.contactNumber}
                 </td>
                 
                 <td className="px-6 py-4">
@@ -48,14 +48,14 @@ const RecipientTable = () => {
                     <a href={`http://localhost:3002/download/${recipient.ehrTxId}`} className="inline-block bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700" >Download File</a>
                 </div>
                 </td>
-                {/* {
+                {
                     recipient.authorised ? (<td className="px-6 py-4">
                     <button  className="font-medium text-red-600 dark:text-blue-500 hover:underline" onClick={(e)=>{dispatch(recipientUnauthorize({"user":"hospital","id":recipient.id,"token":signIn.token})); dispatch(hospitalRecipient({"user":"hospital","token":signIn.token}));}}>Unauthorize</button>
                     </td>) :
                     (<td className="px-6 py-4">
                     <button  className="font-medium text-blue-600 dark:text-blue-500 hover:underline" onClick={(e)=>{dispatch(recipientAuthorize({"user":"hospital","id":recipient.id,"token":signIn.token})); dispatch(hospitalRecipient({"user":"hospital","token":signIn.token}));}}>Authorize</button>
                     </td>)
-                } */}
+                }
                 
             </tr>)}
             

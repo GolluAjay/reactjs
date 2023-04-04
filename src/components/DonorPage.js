@@ -32,7 +32,7 @@ import {donorProfile} from '../redux/slice/donorProfile'
         </div>
 
         <div className="m-auto">
-            <button className="w-11/12 p-8 m-10 sm:w-96 text-sm bg-clip-padding font-semibold text-center text-white transition duration-100 rounded-lg md:text-lg font-nunito bg-gradient-to-r from-blue-600 to-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-300 hover:shadow-lg" >View Organ Donated Details Status</button>
+        <Link to='/donor/status'><button className="w-11/12 p-8 m-10 sm:w-96 text-sm bg-clip-padding font-semibold text-center text-white transition duration-100 rounded-lg md:text-lg font-nunito bg-gradient-to-r from-blue-600 to-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-300 hover:shadow-lg" >View Organ Donated Details Status</button></Link>
         </div>
                            
         </div>

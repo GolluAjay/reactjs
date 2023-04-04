@@ -13,6 +13,10 @@ import Table from "./components/Table";
 import RecipientProfile from "./components/RecipitentProfile";
 import RecipientEditForm from "./components/RecipientEditForm";
 import RecipientTable from "./components/RecipientTable";
+import HospitalDonorDetails from "./components/HospitalDonorDetails";
+import HospitalRecipientDetails from "./components/HospitalRecipicentDetails";
+import MatchedOrgans from "./components/MatchOrgans";
+import DonorStatus from './components/DonorStatus'
 
 function App() {
 
@@ -40,6 +44,10 @@ function App() {
         <Route exact path="/hospital/recipients" element={<RecipientTable/>}/>
         <Route exact path="/recipient/profile" element={<RecipientProfile  user="recipient"/>}/>
         <Route exact path="/recipient/profile/edit" element={<RecipientEditForm/>}/>
+        <Route exact path="/hospital/donor/details" element={<HospitalDonorDetails/>}/>
+        <Route exact path="/hospital/recipient/details" element={<HospitalRecipientDetails/>}/>
+        <Route exact path="/recipient/match" element={<MatchedOrgans></MatchedOrgans>}></Route>
+        <Route exact path="/donor/status" element={<DonorStatus></DonorStatus>}></Route>
       </Routes>
     </div>
     </BrowserRouter>
