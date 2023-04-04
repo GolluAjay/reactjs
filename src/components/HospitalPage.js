@@ -4,6 +4,8 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {hospitalDonor} from '../redux/slice/hospitalDonor';
 import { hospitalRecipient } from '../redux/slice/hospitalRecipients';
+import { hospitalDonorStatus } from '../redux/slice/hospitalDonorStatus';
+import { hospitalRecipientStatus } from '../redux/slice/hospitalRecipientStatus';
 
  const HospitalPage=() => {
     const navigate = useNavigate();
@@ -22,6 +24,8 @@ import { hospitalRecipient } from '../redux/slice/hospitalRecipients';
     useEffect(()=>{
         dispatch(hospitalDonor({"user":"hospital","token":state.data.token}));
         dispatch(hospitalRecipient({"user":"hospital","token":state.data.token}));
+        dispatch(hospitalDonorStatus({"user":"hospital","token":state.data.token}));
+        dispatch(hospitalRecipientStatus({"user":"hospital","token":state.data.token}));
     },[state,dispatch])
   return (
     <div className="bg-gradient-to-r mx-auto">
@@ -46,11 +50,13 @@ import { hospitalRecipient } from '../redux/slice/hospitalRecipients';
         </div>
 
         <div className="m-auto">
-            <button className="w-11/12 p-8 m-10 sm:w-96 text-sm bg-clip-padding font-semibold text-center text-white transition duration-100 rounded-lg md:text-lg font-nunito bg-gradient-to-r from-blue-600 to-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-300 hover:shadow-lg" >View all Organ Donation Results</button>
+        <Link to="/hospital/donor/status"><button className="w-11/12 p-8 m-10 sm:w-96 text-sm bg-clip-padding font-semibold text-center text-white transition duration-100 rounded-lg md:text-lg font-nunito bg-gradient-to-r from-blue-600 to-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-300 hover:shadow-lg" >View all Organ Donation Results</button>
+       </Link>
         </div>
 
         <div className="m-auto">
-            <button className="w-11/12 p-8 m-10 sm:w-96 text-sm bg-clip-padding font-semibold text-center text-white transition duration-100 rounded-lg md:text-lg font-nunito bg-gradient-to-r from-blue-600 to-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-300 hover:shadow-lg" >View Organ Transplation Results</button>
+        <Link to="/hospital/recipient/status"> <button className="w-11/12 p-8 m-10 sm:w-96 text-sm bg-clip-padding font-semibold text-center text-white transition duration-100 rounded-lg md:text-lg font-nunito bg-gradient-to-r from-blue-600 to-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-300 hover:shadow-lg" >View Organ Transplation Results</button>
+        </Link>
         </div>
                            
         </div>

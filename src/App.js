@@ -17,6 +17,8 @@ import HospitalDonorDetails from "./components/HospitalDonorDetails";
 import HospitalRecipientDetails from "./components/HospitalRecipicentDetails";
 import MatchedOrgans from "./components/MatchOrgans";
 import DonorStatus from './components/DonorStatus'
+import HospitalDonorStatus from "./components/HospitalDonorStatus";
+import HospitalRecipientStatus from "./components/HospitalRecipientStatus";
 
 function App() {
 
@@ -48,6 +50,8 @@ function App() {
         <Route exact path="/hospital/recipient/details" element={<HospitalRecipientDetails/>}/>
         <Route exact path="/recipient/match" element={<MatchedOrgans></MatchedOrgans>}></Route>
         <Route exact path="/donor/status" element={<DonorStatus></DonorStatus>}></Route>
+        <Route exact path="hospital/donor/status" element={<HospitalDonorStatus></HospitalDonorStatus>}></Route>
+        <Route exact path="hospital/recipient/status" element={<HospitalRecipientStatus></HospitalRecipientStatus>}></Route>
       </Routes>
     </div>
     </BrowserRouter>

@@ -15,6 +15,8 @@ import recipientAuthorizeRedure from './slice/hospitalRecipientAuthorize';
 import recipientUnauthorizeRedure from './slice/hospitalRecipientUnauthorize';
 import hospitalRecipientReducer from './slice/hospitalRecipients';
 import donorMatchReducer from './slice/donorMatch'
+import hospitalDonorStatusReducer from './slice/hospitalDonorStatus';
+import hospitalRecipientStatusReducer from "./slice/hospitalRecipientStatus";
 
 export const store = configureStore({
     middleware:[thunk],
@@ -33,6 +35,8 @@ export const store = configureStore({
         recipientAuthorize : recipientAuthorizeRedure,
         recipientUnauthorize : recipientUnauthorizeRedure,
         hospitalRecipient : hospitalRecipientReducer,
-        donorMatch : donorMatchReducer
+        donorMatch : donorMatchReducer,
+        hospitalDonorStatus : hospitalDonorStatusReducer,
+        hospitalRecipientStatus : hospitalRecipientStatusReducer
     },
 });
